@@ -1,0 +1,18 @@
+
+
+
+proc sql;
+create table aa as 
+select sum(count(distinct varname),8) from tablename
+where varname is not null ;
+quit;
+/*note summing up without numeric formats will result in errors such as 
+ERROR: Summary functions nested in this way are not supported.*/
+for example ,
+if you do,
+proc sql;
+create table bb as
+select sum(count(distinct varname)) from tablename
+where varname is not null;
+quit;
+/*this will result in error*/
